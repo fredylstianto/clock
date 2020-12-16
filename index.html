@@ -1,0 +1,170 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Online Clock</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:200" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- personal js files -->
+<script src="js/timer.js"></script>
+<script src="js/multi-color.js"></script>
+<script src="js/jquery.fullscreen.js"></script>
+
+<!-- personal css files -->
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<link rel="stylesheet" href="css/menu.css" type="text/css">
+
+<link rel="shortcut icon" href="../web.ico">
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+.feedback {
+	padding:10px;
+	text-align: center;
+}
+.feedback a {
+	text-decoration: none;
+	color:blue;
+}
+img {
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div id="menu-button">
+		<img src="pics/menu-button.png" class="menu-button" onclick="showMenu(1)">
+	</div>
+	<div id="menu" class="hide">
+		<div id="close-button">
+			<img src="pics/x.png" class="close" onclick="showMenu(0)">
+		</div>
+		<div class="color-choice">
+			<h2>Color Choice</h2>
+			<div id="multi" class="chosen" onclick="changeColor(0)"><h3 class="color">Color Fade</h3></div>
+			<div id="one"><h3 class="color">Single Color</h3></div>
+			<table cellspacing="7" id="colorPicker">
+				<!-- colors will go here -->
+			</table>
+			<div id="none" onclick="changeColor(1)"><h3 class="color">None</h3></div>
+		</div>
+		<div class="clock-type">
+			<h2>Clock Type</h2>
+			<div class="switch">
+				<div class="button on" id="12" onclick="changeV(0)"><h3 style="padding:0px;margin:0px;">12H</h3></div>
+				<div class="button chosen" id="24" onclick="changeV(1)"><h3 style="padding:0px;margin:0px;">24H</h3></div>
+			</div>
+		</div><br><br><br>
+		<div class="thickness">
+			<h2>Font Thickness</h2>
+			<div class="thick">
+				<div class="button on thick" id="thin" onclick="changeThick(0)"><h3 style="padding:0px;margin:0px;">Thin</h3></div>
+				<div class="button thick" id="norm" onclick="changeThick(1)"><h3 style="padding:0px;margin:0px;">Normal</h3></div>
+				<div class="button thick" id="thick" onclick="changeThick(2)"><h3 style="padding:0px;margin:0px;">Thick</h3></div>
+			</div>
+		</div><br><br><br>
+		<div class="menu-button-selesct">
+			<h2>Menu Button Show/Hide</h2>
+			<div class="switch">
+				<div class="button on" id="on" onclick="changeH(0)"><h3 style="padding:0px;margin:0px;">Visible</h3></div>
+				<div class="button chosen" id="off" onclick="changeH(1)"><h3 style="padding:0px;margin:0px;">Hidden</h3></div>
+			</div>
+			<div class="note">Double click on the screen to change visibility again</div>
+		</div>
+		<div style="height:100px;"></div>
+	</div>
+	<div id="container">
+		<center>
+		<div id="inner">
+			<span id="h">H</span>
+			<span class="colon"> : </span>
+			<span id="m">M</span>
+			<span class="colon"> : </span>
+			<span id="s">S</span>
+			<span id="pm" style="font-size:25px;"></span>
+		</div>
+		</center>
+	</div>
+	<script src="js/menu/clockType.js"></script>
+	<script src="js/menu/colorSelector.js"></script>
+	<script src="js/menu/colors.js"></script>
+	<script src="js/menu/menuVisibility.js"></script>
+	<script type="text/javascript">
+		
+		function align() {
+			
+			// check body
+			var bodyHeight = $("body").height();
+			var bodyWidth = $("body").width();
+
+			// parents dimensions
+			var pHeight = $("#container").height();
+			
+			// divs dimensions
+			var height = $("#inner").height();
+			
+			// implementation
+			if (bodyHeight <= bodyWidth) {
+				$("#inner").css('margin-top', (pHeight/2) - (height/2));
+				$("#pm").css('margin-top', (pHeight/2) - (height/2));
+			} else {
+				$("#inner").css('margin-top', (pHeight/2) - (height*2));
+				$("#pm").css('margin-top', (pHeight/2) - (height*2));
+			}
+		}
+		align();
+
+		function showMenu(i) {
+			if (i == 1) {
+				var val = -1000;
+				$("#menu").removeClass('hide');
+				$("#container").click(function () {
+					showMenu(0)
+				});
+			}
+			else $("#menu").addClass('hide');
+		}
+
+		// a function to change the thickness of the font
+		function changeThick(i) {
+			switch (i) {
+				case 0:
+					changeThickColor("thin","norm","thick");
+					$('span').css('font-family','roboto thin');
+					break;
+				case 1:
+					changeThickColor("norm","thick","thin");
+					$('span').css('font-family','roboto');
+					break;
+				case 2:
+					changeThickColor("thick","thin","norm");
+					$('span').css('font-family','roboto bold');
+					break;
+			}
+		}
+
+		function changeThickColor(on, off1, off2) {
+			$("#" + on).addClass('on');
+			$("#" + off1).removeClass('on');
+			$("#" + off2).removeClass('on');
+		}
+
+		$(function () {
+			$("#container").dblclick(function() {
+				if ($("#menu-button").hasClass("hide")) {
+					$("#menu-button").removeClass("hide");
+					changeH(0);
+				}
+			});
+		});
+		
+		// calling functions
+		fillColors();
+		getTimer();
+		setColor();
+	</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@media screen and (max-width: 780px) {
+	body {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	#menu-button {
+		width: 15% !important;
+		position: absolute;
+		float: right;
+		top:10px !important;
+		right: 10px;
+	}
+	#menu {
+		width: 70% !important;
+	}
+	.button {
+		padding:13px 35px !important;
+	}
+	.thick {
+		padding:13px 13px !important;
+	}
+ }
+
+/* burger menu */
+#menu-button {
+	width:5%;
+	float: right;
+	z-index:-1;
+	border-radius: 5em;
+	background-color: rgba(204, 204, 204, 0.4);
+	transition: background-color 300ms ease;
+}
+#menu-button:hover {
+	background-color: rgba(142,142,142, 0.4);
+	transition: background-color 300ms ease;
+}
+.menu-button {
+	width:100%;
+}
+/* main menu box */
+#menu {
+	display:inline-block;
+	position:fixed;
+	font-family:work sans;
+	float:right;
+	z-index:1;
+	padding:15px;
+	top:0;
+	right:0;
+	width:23%;
+	height:100%;
+	background-color: #f6f6f6;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.8);
+	right: 0;
+	transition: right 300ms ease;
+	overflow-y: auto;
+}
+
+#close-button {
+	display:inline-block;
+	width: 13%;
+}
+.close {
+	width:100%;
+	border-radius: 7em;
+	background-color: rgba(204, 204, 204, 0.4);
+	transition: background-color 300ms ease;
+}
+.close:hover {
+	background-color: rgba(142,142,142, 0.4);
+	transition: background-color 300ms ease;
+}
+
+/* highlights the chosen color function */
+.chosen {
+	background-color: #eaeaea;
+}
+
+/* button text styles */
+h2 {
+	border-bottom:1px solid #8e8e8e;
+	padding-bottom:0;
+}
+h3.color { padding:10px; }
+h3.color:hover {
+	background-color:#eaeaea;
+	cursor: pointer;
+}
+
+/* table for color selector */
+table { margin: 0; margin-top: -10; padding: 0;}
+table tr { margin: 0; padding: 0;}
+td {
+   width:40px;
+   height:40px;
+   text-align: center;
+   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+}
+td img {
+   width: 100%;
+   height: 95%;
+}
+
+/* 12 - 24 hour section */
+.button {
+	float:left;
+	padding:13px 45px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+}
+
+/* highlights the button that the user selected */
+.on {
+	background: #2FB0FF;
+}
+
+/* fullscreen section */
+#goFull {
+	padding:10px;
+	text-align:center;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+	transition: box-shadow 300ms ease, background-color 300ms ease;
+	cursor: pointer;
+}
+#goFull:hover {
+	background-color: #d5efff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+	transition: all 300ms ease;
+}
+
+/* hides the menu */
+.hide {
+	display: none !important;
+	right:-1000px;
+	transition: right 300ms ease;
+}
+.thick {
+	padding:13px 20px;
+}
+#thin { font-family: roboto thin; }
+#norm { font-family: roboto; }
+#thick { font-family: roboto bold; }
+.more {
+	margin-top: 30px;
+}

@@ -1,0 +1,1 @@
+- make the change that igor talked about, so find the math function that he was talking about and change the color o the text accordingly
